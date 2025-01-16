@@ -18,22 +18,41 @@ const AskQuestionForm = () => {
       return;
     }
 
+    if (!question.trim()) {
+      console.log("Please enter a question.");
+      return;
+    }
+
     try {
+      const token = cookie.get("jwt_token")?.trim();
+      if (!token) {
+        console.log("No JWT token found.");
+        return;
+      }
+
+      console.log("Sending request to the server...");
+
       const response = await axios.post(
         "http://localhost:3003/question",
-        { question },
+        { question_text: question },
         {
           headers: {
-            Authorization: `Bearer ${cookie.get("jwt_token")}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-      if (response.status === 200) {
+
+      if (response.status === 201) {
         console.log("Your question was posted!");
         router.push("/");
+      } else {
+        console.log("Unexpected response:", response);
       }
     } catch (err) {
-      console.log("Error", err);
+      console.error(
+        "Error posting question:",
+        err.response ? err.response.data : err
+      );
     }
   };
 

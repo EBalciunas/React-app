@@ -17,18 +17,43 @@
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.wrapper button {
-  padding: 0.6rem;
-  border-radius: 0.2rem;
-  cursor: pointer;
+.button {
+  padding: 1rem 2rem;
+  border-radius: 30px;
   border: none;
-  background: none;
-  transition: 0.3s;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background-color: #88827c;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
+  width: 100%;
+  text-align: center;
 }
 
 .button:hover {
-  scale: 1.03;
+  background-color: #5a52e3;
+  transform: scale(1.05);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.answerInput {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 2px solid #ccc;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.answerInput:focus {
+  border-color: #88827c;
+  outline: none;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2), 0 0 10px #88827c;
 }

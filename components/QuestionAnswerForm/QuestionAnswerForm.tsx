@@ -4,12 +4,12 @@ import cookie from "js-cookie";
 import styles from "./styles.module.css";
 import { useRouter } from "next/router";
 
-type AnswerQuestionFormProps = {
+type QuestionAnswerFormProps = {
   id: string;
   answer: string;
 };
 
-const AnswerQuestionForm = ({ id, answer }: AnswerQuestionFormProps) => {
+const QuestionAnswerForm = ({ id, answer }: QuestionAnswerFormProps) => {
   const [answerText, setAnswerText] = useState(answer);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
@@ -37,7 +37,7 @@ const AnswerQuestionForm = ({ id, answer }: AnswerQuestionFormProps) => {
 
       if (response.status === 200) {
         console.log("Your answer has been submitted!");
-        setAnswerText("aaaa");
+        setAnswerText("");
       }
     } catch (err) {
       console.log("Error submitting answer", err);
@@ -49,12 +49,16 @@ const AnswerQuestionForm = ({ id, answer }: AnswerQuestionFormProps) => {
       {isAuthenticated ? (
         <>
           <input
+            className={styles.answerInput}
             type="text"
             placeholder="Your Answer"
             value={answerText}
             onChange={(e) => setAnswerText(e.target.value)}
           />
-          <button onClick={onSubmitAnswer}>Submit Answer</button>
+          <button onClick={onSubmitAnswer} className={styles.button}>
+            {" "}
+            Submit Answer
+          </button>
         </>
       ) : (
         <p>You need to be logged in to answer a question.</p>
@@ -63,4 +67,4 @@ const AnswerQuestionForm = ({ id, answer }: AnswerQuestionFormProps) => {
   );
 };
 
-export default AnswerQuestionForm;
+export default QuestionAnswerForm;

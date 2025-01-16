@@ -1,24 +1,25 @@
 .card {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centruojame viską */
-  gap: 1.5rem;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 20px 4px; /* Švelnus šešėlis */
+  align-items: center;
+  gap: 3rem;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 20px 4px;
   padding: 2rem;
-  border-radius: 12px; /* Apvalesni kampai */
+  border-radius: 12px;
   font-size: 1.6rem;
   letter-spacing: 0.5px;
   width: 70%;
   max-width: 800px;
   margin: auto;
+  margin-top: 2rem;
   background: linear-gradient(to top right, #201212, #ffffff);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: center; /* Tekstas bus centre */
+  text-align: center;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 12px 30px 4px; /* Pabrėžiamas efektas užvedus pelę */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 12px 30px 4px;
 }
 
 .card span {
@@ -31,22 +32,22 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-  justify-content: center; /* Centruojame mygtukus */
-  width: 100%; /* Užims visą plotį */
+  justify-content: center;
+  width: 100%;
 }
 
 .card button {
   padding: 0.6rem 1rem;
-  width: 8rem; /* Kiekvienas mygtukas bus 8rem pločio */
+  width: 8rem;
   border: none;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 10px 2px;
   font-weight: 600;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  border-radius: 8px; /* Apvalūs kampai */
+  border-radius: 8px;
   display: flex;
   justify-content: center;
-  align-items: center; /* Centruojame piktogramą */
+  align-items: center;
 }
 
 .card button:hover {
@@ -58,17 +59,17 @@
 .dislikeBtn,
 .deleteBtn {
   display: inline-block;
-  width: 100%; /* Mygtukai užims 100% pločio */
+  width: 100%;
 }
 
 .likeBtn img,
 .dislikeBtn img {
-  width: 20%; /* Piktogramų dydis, kad tilptų */
+  width: 20%;
 }
 
 .card .likeBtn:hover,
 .card .dislikeBtn:hover {
-  transform: scale(1.1); /* Efektas ant piktogramų */
+  transform: scale(1.1);
 }
 
 .deleteBtn {
@@ -79,5 +80,5 @@
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  font-size: 1.2rem; /* Padidintas šrifto dydis */
+  font-size: 1.2rem;
 }
