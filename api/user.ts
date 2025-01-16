@@ -5,8 +5,9 @@ type UserCredentials = {
   password: string;
 };
 
-export const LoginUser = async (userData: UserCredentials) => {
+export const loginUser = async (userData: UserCredentials) => {
   const response = await axios.post(`${process.env.BASE_URL}/login`, userData);
+
   return response;
 };
 
@@ -18,7 +19,7 @@ type SigninUser = {
 
 export const SigninUser = async (userData: SigninUser) => {
   const response = await axios.post(
-    `${process.env.BASE_URL}/sign_in`,
+    `${process.env.BASE_URL}/register`,
     userData
   );
   return response;

@@ -23,7 +23,7 @@ const Header = () => {
           <Link href="/">Main</Link>
         </li>
         <li>
-          <Link href="/ask-question">Ask Question</Link>
+          <Link href="/ask-question">ASK your Question</Link>
         </li>
         <li>
           <button

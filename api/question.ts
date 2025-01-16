@@ -4,7 +4,7 @@ export const insertQuestion = async (token: string) => {
   const headers = {
     authorization: token || "",
   };
-  const response = await axios.post(`${process.env.BASE_URL}/questions/`, {
+  const response = await axios.post(`${process.env.BASE_URL}/question`, {
     headers,
   });
 
