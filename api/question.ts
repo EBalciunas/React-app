@@ -4,7 +4,7 @@ export const insertQuestion = async (token: string) => {
   const headers = {
     authorization: token || "",
   };
-  const response = await axios.post(`${process.env.BASE_URL}/question`, {
+  const response = await axios.post(`http://localhost:3003/question`, {
     headers,
   });
 
@@ -15,7 +15,7 @@ export const getAllQuestions = async (token: string) => {
   const headers = {
     authorization: token || "",
   };
-  const response = await axios.get(`${process.env.BASE_URL}/questions`, {
+  const response = await axios.get(`http://localhost:3003/questions`, {
     headers,
   });
 
@@ -26,7 +26,7 @@ export const getQuestionsById = async (id: string, token: string) => {
   const headers = {
     authorization: token || "",
   };
-  const response = await axios.get(`${process.env.BASE_URL}/questions/${id}`, {
+  const response = await axios.get(`http://localhost:3003/questions/${id}`, {
     headers,
   });
 
@@ -37,12 +37,9 @@ export const deleteQuestionsById = async (id: string, token: string) => {
   const headers = {
     authorization: token || "",
   };
-  const response = await axios.delete(
-    `${process.env.BASE_URL}/questions/${id}`,
-    {
-      headers,
-    }
-  );
+  const response = await axios.delete(`http://localhost:3003/questions/${id}`, {
+    headers,
+  });
 
   return response;
 };
@@ -56,7 +53,7 @@ export const updateQuestionStatus = async (
     authorization: token || "",
   };
   const response = await axios.put(
-    `${process.env.BASE_URL}/questions/${id}`,
+    `http://localhost:3003/questions/${id}`,
     body,
     {
       headers,

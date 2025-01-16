@@ -6,8 +6,7 @@ type UserCredentials = {
 };
 
 export const loginUser = async (userData: UserCredentials) => {
-  const response = await axios.post(`${process.env.BASE_URL}/login`, userData);
-
+  const response = await axios.post(`http://localhost:3003/login`, userData);
   return response;
 };
 
@@ -18,9 +17,18 @@ type SigninUser = {
 };
 
 export const SigninUser = async (userData: SigninUser) => {
-  const response = await axios.post(
-    `${process.env.BASE_URL}/register`,
-    userData
-  );
-  return response;
+  try {
+    const response = await axios.post(
+      "http://localhost:3003/register",
+      userData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response;
+  } catch (err) {
+    throw new Error("Failed to register user. Please try again later.");
+  }
 };

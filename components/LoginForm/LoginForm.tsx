@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 import { useRouter } from "next/router";
 import RegisterForm from "../SignupForm/SignupForm";
 import { AxiosError } from "axios";
-import { LoginUser } from "@/api/user";
+import { loginUser } from "@/api/user";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -21,7 +21,7 @@ const LoginForm = () => {
         email: email,
         password: password,
       };
-      const response = await LoginUser(userData);
+      const response = await loginUser(userData);
 
       if (response.status === 200) {
         setLoggingIn(false);

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
-import cookie from "js-cookie";
 import { useRouter } from "next/router";
 import { SigninUser } from "@/api/user";
 
@@ -19,15 +18,18 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSwitchToLogin }) => {
   const onRegister = async () => {
     setLoggingIn(true);
     setError(null);
+    const userData = { name, email, password };
+
     try {
-      const userData = { name, email, password };
       const response = await SigninUser(userData);
 
       if (response.status === 200) {
-        cookie.set("jwt_token", response.data.token);
-        router.push("/");
+        await router.push("/login");
       } else {
-        setError("Registration failed. Please check your details.");
+        setError(
+          response.data?.message ||
+            "Registration failed. Please check your details."
+        );
       }
     } catch (err) {
       setError("An unexpected error occurred. Please try again later.");
@@ -39,7 +41,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSwitchToLogin }) => {
   return (
     <div className={styles.wrapper}>
       <h1>Register</h1>
-      {error && <p className={styles.error}>{error}</p>}{" "}
+      {error && <p className={styles.error}>{error}</p>}
       <input
         type="text"
         placeholder="Name"
@@ -61,7 +63,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSwitchToLogin }) => {
       <button onClick={onRegister} disabled={isLoggingIn}>
         {isLoggingIn ? "Registering..." : "Register"}
       </button>
-      <button onClick={onSwitchToLogin}> Already have an account?</button>
+      <button onClick={onSwitchToLogin}>Already have an account?</button>
     </div>
   );
 };
