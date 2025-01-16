@@ -1,53 +1,83 @@
 .card {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: center; /* Centruojame viską */
   gap: 1.5rem;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 20px 4px; /* Švelnus šešėlis */
   padding: 2rem;
-  border-radius: 0.4rem;
-  transition: 0.3s;
-  font-size: 1.8rem;
-  letter-spacing: 1px;
+  border-radius: 12px; /* Apvalesni kampai */
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
   width: 70%;
+  max-width: 800px;
   margin: auto;
-  justify-content: space-between;
-  margin-top: 3rem;
+  background: linear-gradient(to top right, #201212, #ffffff);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center; /* Tekstas bus centre */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 12px 30px 4px; /* Pabrėžiamas efektas užvedus pelę */
+}
+
+.card span {
+  font-weight: 500;
+  color: #333;
+  max-width: 80%;
+}
+
+.cardBtn {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center; /* Centruojame mygtukus */
+  width: 100%; /* Užims visą plotį */
 }
 
 .card button {
-  display: flex;
-  display: inline-block;
-  background: none;
-  padding: 0.4rem;
-  width: 7rem;
+  padding: 0.6rem 1rem;
+  width: 8rem; /* Kiekvienas mygtukas bus 8rem pločio */
   border: none;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
-
-.likeBtn {
-  display: inline-block !important;
-  width: 30px !important;
-}
-.likeBtn img {
-  width: 100%;
-}
-
-.dislikeBtn {
-  display: inline-block !important;
-  width: 30px !important;
-}
-.dislikeBtn img {
-  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 10px 2px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 8px; /* Apvalūs kampai */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centruojame piktogramą */
 }
 
 .card button:hover {
-  scale: 1.03;
+  transform: scale(1.05);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
-.answerBtn {
-  display: flex;
-  gap: 1rem;
+.likeBtn,
+.dislikeBtn,
+.deleteBtn {
+  display: inline-block;
+  width: 100%; /* Mygtukai užims 100% pločio */
+}
+
+.likeBtn img,
+.dislikeBtn img {
+  width: 20%; /* Piktogramų dydis, kad tilptų */
+}
+
+.card .likeBtn:hover,
+.card .dislikeBtn:hover {
+  transform: scale(1.1); /* Efektas ant piktogramų */
+}
+
+.deleteBtn {
+  background-color: #e74c3c;
+  color: rgb(247, 230, 230);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1.2rem; /* Padidintas šrifto dydis */
 }

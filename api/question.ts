@@ -37,7 +37,7 @@ export const deleteQuestionsById = async (id: string, token: string) => {
   const headers = {
     authorization: token || "",
   };
-  const response = await axios.delete(`http://localhost:3003/questions/${id}`, {
+  const response = await axios.delete(`http://localhost:3003/question/:id`, {
     headers,
   });
 

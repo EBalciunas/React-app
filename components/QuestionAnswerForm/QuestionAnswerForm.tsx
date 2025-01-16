@@ -26,7 +26,7 @@ const AnswerQuestionForm = ({ id, answer }: AnswerQuestionFormProps) => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3002/answers/${id}`,
+        `http://localhost:3003/answers/${id}`,
         { answer: answerText },
         {
           headers: {

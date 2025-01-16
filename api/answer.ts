@@ -4,7 +4,7 @@ export const insertAnswer = async (token: string) => {
   const headers = {
     authorization: token || "",
   };
-  const response = await axios.post(`${process.env.BASE_URL}/answers/`, {
+  const response = await axios.post(`http://localhost:3003/:id/answer`, {
     headers,
   });
 
@@ -15,7 +15,7 @@ export const getAllAnswers = async (token: string) => {
   const headers = {
     authorization: token || "",
   };
-  const response = await axios.get(`${process.env.BASE_URL}/answers`, {
+  const response = await axios.get(`http://localhost:3003/answers`, {
     headers,
   });
 
@@ -26,7 +26,7 @@ export const getAnswersById = async (id: string, token: string) => {
   const headers = {
     authorization: token || "",
   };
-  const response = await axios.get(`${process.env.BASE_URL}/answers/${id}`, {
+  const response = await axios.get(`http://localhost:3003/answers/${id}`, {
     headers,
   });
 
@@ -37,9 +37,12 @@ export const deleteAnswersById = async (id: string, token: string) => {
   const headers = {
     authorization: token || "",
   };
-  const response = await axios.delete(`${process.env.BASE_URL}/answers/${id}`, {
-    headers,
-  });
+  const response = await axios.delete(
+    `http://localhost:3003/answers/:id/delete`,
+    {
+      headers,
+    }
+  );
 
   return response;
 };
@@ -53,7 +56,7 @@ export const updateAnswerStatus = async (
     authorization: token || "",
   };
   const response = await axios.put(
-    `${process.env.BASE_URL}/answers/${id}`,
+    `http://localhost:3003/answers/${id}`,
     body,
     {
       headers,

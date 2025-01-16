@@ -20,7 +20,7 @@ const AskQuestionForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3002/questions",
+        "http://localhost:3003/question",
         { question },
         {
           headers: {
@@ -41,20 +41,26 @@ const AskQuestionForm = () => {
     <div>
       {isAuthenticated ? (
         <div className={styles.wrapper}>
+          <h1>Ask a Question</h1>
           <input
             type="text"
-            placeholder="Question"
+            placeholder="Type your question here..."
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
+            className={styles.input}
           />
+          <button onClick={onAskQuestion} className={styles.button}>
+            Submit
+          </button>
           <Link href={"/"} passHref>
-            <button onClick={onAskQuestion} className={styles.questionBtn}>
-              Submit Question
-            </button>
+            <button className={styles.secondaryButton}>Cancel</button>
           </Link>
         </div>
       ) : (
-        <p>You need to log in to ask a question.</p>
+        <p className={styles.error}>
+          You must log in or register to your account to get access to ask
+          questions.
+        </p>
       )}
     </div>
   );
