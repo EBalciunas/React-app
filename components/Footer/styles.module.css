@@ -1,0 +1,9 @@
+.wrapper {
+  height: 80px;
+  margin: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+  border-top: 1px solid rgb(206, 195, 195);
+}

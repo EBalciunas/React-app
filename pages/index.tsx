@@ -1,7 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Question } from "@/types/question";
+import { useRouter } from "next/router";
+import { getAllQuestions } from "@/api/question";
+import { AxiosError } from "axios";
+import cookie from "js-cookie";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+import QuestionCard from "@/components/QuestionCard/QuestionCard";
 
-const index = () => {
-  return <div>Index</div>;
+const MainPage = () => {
+  const router = useRouter();
+
+  const [questions, setQuestions] = useState<Question[]>([]);
+
+  const fetchQuestions = async () => {
+    const token = cookie.get("jwt_token");
+    try {
+      const response = await getAllQuestions(token as string);
+
+      setQuestions(response.data.tasks);
+
+      console.log(response);
+    } catch (err: unknown) {
+      const error = err as AxiosError;
+
+      if ((error.status = 401)) {
+        router.push("/login");
+      }
+
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchQuestions();
+  }, []);
+  return (
+    <div>
+      <Header />
+      <QuestionCard id="" question="" />
+      <Footer />
+    </div>
+  );
 };
 
-export default index;
+export default MainPage;
